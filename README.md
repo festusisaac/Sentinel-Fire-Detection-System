@@ -75,13 +75,23 @@ certifi>=2020.0.0
 
 5. **Update Configuration** in `detector.py`:
    ```python
-   BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
-   CHAT_ID = "YOUR_TELEGRAM_CHAT_ID"
+   # Set environment variables (recommended for security)
+   # On Windows:
+   # set TELEGRAM_BOT_TOKEN=your_bot_token
+   # set TELEGRAM_CHAT_ID=your_chat_id
+   # set TWILIO_ACCOUNT_SID=your_twilio_sid
+   # set TWILIO_AUTH_TOKEN=your_twilio_token
+   # set TWILIO_FROM_NUMBER=+your_twilio_number
+   # set TO_PHONE_NUMBER=+target_phone_number
    
-   TWILIO_ACCOUNT_SID = "YOUR_TWILIO_SID"
-   TWILIO_AUTH_TOKEN = "YOUR_TWILIO_TOKEN"
-   TWILIO_FROM_NUMBER = "+YOUR_TWILIO_NUMBER"
-   TO_PHONE_NUMBER = "+TARGET_PHONE_NUMBER"
+   # Or edit the defaults in detector.py:
+   BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "YOUR_TELEGRAM_BOT_TOKEN")
+   CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "YOUR_TELEGRAM_CHAT_ID")
+   
+   TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID", "YOUR_TWILIO_SID")   
+   TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN", "YOUR_TWILIO_TOKEN")
+   TWILIO_FROM_NUMBER = os.getenv("TWILIO_FROM_NUMBER", "+YOUR_TWILIO_NUMBER")
+   TO_PHONE_NUMBER = os.getenv("TO_PHONE_NUMBER", "+TARGET_PHONE_NUMBER")
    ```
 
 ## Usage
